@@ -469,50 +469,14 @@ img {
 }
 
 .props-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
 }
 
-.props-grid .prop-card:nth-child(4) {
-  grid-column: 1 / 2;
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.props-grid .prop-card:nth-child(5) {
-  grid-column: 3 / 4;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-/* Center the last two cards */
-@media (min-width: 769px) {
-  .props-grid {
-    justify-items: center;
-  }
-  .props-grid .prop-card:nth-child(4),
-  .props-grid .prop-card:nth-child(5) {
-    grid-column: auto;
-  }
-  .props-grid::after {
-    content: '';
-    grid-column: 3;
-  }
-  .props-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  /* Last row: 2 cards centered */
-  .props-grid .prop-card:nth-child(4) {
-    grid-column: 1 / 2;
-    justify-self: end;
-    margin-right: -60px;
-  }
-  .props-grid .prop-card:nth-child(5) {
-    grid-column: 2 / 3;
-    justify-self: start;
-    margin-left: -60px;
-  }
+.props-grid .prop-card {
+  flex: 0 1 calc((100% - 48px) / 3);
 }
 
 .prop-card {
@@ -562,9 +526,14 @@ img {
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
+}
+
+.services-grid .service-card {
+  flex: 0 1 calc((100% - 48px) / 3);
 }
 
 .service-card {
@@ -657,21 +626,6 @@ img {
   color: var(--blue-light);
 }
 
-/* Center last 2 service cards */
-@media (min-width: 769px) {
-  .services-grid .service-card:nth-child(4) {
-    grid-column: 1 / 2;
-    justify-self: end;
-    max-width: 380px;
-    margin-right: -60px;
-  }
-  .services-grid .service-card:nth-child(5) {
-    grid-column: 2 / 3;
-    justify-self: start;
-    max-width: 380px;
-    margin-left: -60px;
-  }
-}
 
 /* ===== How It Works ===== */
 .how-it-works {
@@ -1275,23 +1229,13 @@ img {
     max-width: 100%;
   }
 
-  .props-grid,
-  .services-grid,
+  .props-grid .prop-card,
+  .services-grid .service-card {
+    flex: 1 1 100%;
+  }
+
   .testimonials-grid {
     grid-template-columns: 1fr;
-  }
-
-  .props-grid .prop-card:nth-child(4),
-  .props-grid .prop-card:nth-child(5) {
-    margin: 0;
-    justify-self: stretch;
-  }
-
-  .services-grid .service-card:nth-child(4),
-  .services-grid .service-card:nth-child(5) {
-    justify-self: stretch;
-    max-width: none;
-    margin: 0;
   }
 
   .steps {
